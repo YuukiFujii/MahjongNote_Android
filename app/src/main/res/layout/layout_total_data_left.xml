@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/total_data_left"
+    android:layout_height="match_parent"
+    android:layout_width="0dp"
+    android:layout_weight="1"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/total_data_left_divident"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="総合配当" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/total_data_left_payment"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="総合収支" />
+    </LinearLayout>
+</LinearLayout>
