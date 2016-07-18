@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bootstrap="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:bootstrapbutton="http://schemas.android.com/tools"
     android:orientation="vertical">
 
     <LinearLayout
@@ -27,7 +30,7 @@
 
         </LinearLayout>
 
-        <lecho.lib.hellocharts.view.LineChartView
+        <lecho.lib.hellocharts.view.ComboLineColumnChartView
             android:id="@+id/chart"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -39,11 +42,17 @@
             android:layout_height="0dp"
             android:layout_weight="4"></ListView>
 
-        <LinearLayout
+        <com.beardedhen.androidbootstrap.BootstrapButton
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="horizontal"></LinearLayout>
+            android:text="新規対局"
+            app:bootstrapSize="lg"
+            app:showOutline="false"
+            app:roundedCorners="false"
+            app:bootstrapBrand="info"
+            />
+
     </LinearLayout>
 
 </LinearLayout>

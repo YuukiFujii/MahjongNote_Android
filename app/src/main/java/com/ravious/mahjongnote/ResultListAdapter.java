@@ -5,6 +5,7 @@ package com.ravious.mahjongnote;
  */
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,6 +52,13 @@ public class ResultListAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         convertView = layoutInflater.inflate(R.layout.item_recent_game,parent,false);
+
+        Typeface font = Typeface.createFromAsset(context.getAssets(), "fontawesome-webfont.ttf");
+        Typeface fontOsBr = Typeface.createFromAsset(context.getAssets(), "OstrichSans-Black.otf");
+        ((TextView) convertView.findViewById(R.id.divident_icon)).setTypeface(font);
+        ((TextView) convertView.findViewById(R.id.item_text_payment)).setTypeface(fontOsBr);
+        ((TextView) convertView.findViewById(R.id.payment_icon)).setTypeface(font);
+        ((TextView) convertView.findViewById(R.id.ranking_icon)).setTypeface(font);
 
         ((TextView)convertView.findViewById(R.id.item_text_averageRank)).setText(result_list.get(position).getAverageRank());
         ((TextView)convertView.findViewById(R.id.item_text_divident)).setText(String.valueOf(result_list.get(position).getDivident()));
