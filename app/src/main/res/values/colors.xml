@@ -3,4 +3,9 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="colorTransAccent">#55FF4081</color>
+    <color name="isSelectedCell">#33555555</color>
+    <color name="text">#cc222222</color>
+
+    <color name="white">#FFFFFF</color>
 </resources>

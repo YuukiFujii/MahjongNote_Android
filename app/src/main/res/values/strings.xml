@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">MahjongNote</string>
     <string name="banner_ad_unit_id">ca-app-pub-9610357406441163/6106798932</string>
+    <string name="line">line</string>
+    <string name="column">column</string>
+
 </resources>

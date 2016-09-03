@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bootstrapButton="http://schemas.android.com/tools"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9"
+        android:padding="10dp"
+        android:overScrollMode="never">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TableLayout
+                android:id="@+id/game_table"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </TableLayout>
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:id="@+id/button_add"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="追加"
+                app:bootstrapSize="lg"
+                app:roundedCorners="false"
+                app:showOutline="true"
+                bootstrapButton:bb_type="info" />
+        </LinearLayout>
+    </ScrollView>
+    <include
+        android:id="@+id/input_keyboard"
+        layout="@layout/row_input_keyboard"/>
+
+</LinearLayout>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bootstrapButton="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TableRow>
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/button_one"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="1"
+            app:bootstrapSize="lg"
+            app:roundedCorners="false"
+            app:showOutline="true"
+            bootstrapButton:bb_type="default" />
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/button_two"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="2"
+            app:bootstrapSize="lg"
+            app:roundedCorners="false"
+            app:showOutline="true"
+            bootstrapButton:bb_type="default" />
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/button_three"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="3"
+            app:bootstrapSize="lg"
+            app:roundedCorners="false"
+            app:showOutline="true"
+            bootstrapButton:bb_type="default" />
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/button_four"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="4"
+            app:bootstrapSize="lg"
+            app:roundedCorners="false"
+            app:showOutline="true"
+            bootstrapButton:bb_type="default" />
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/button_five"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="5"
+            app:bootstrapSize="lg"
+            app:roundedCorners="false"
+            app:showOutline="true"
+            bootstrapButton:bb_type="default" />
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/button_sign"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="±"
+            app:bootstrapSize="lg"
+            app:roundedCorners="false"
+            app:showOutline="true"
+            bootstrapButton:bb_type="default" />
+    </TableRow>
+    <TableRow>
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/button_six"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="6"
+            app:bootstrapSize="lg"
+            app:roundedCorners="false"
+            app:showOutline="true"
+            bootstrapButton:bb_type="default" />
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/button_seven"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="7"
+            app:bootstrapSize="lg"
+            app:roundedCorners="false"
+            app:showOutline="true"
+            bootstrapButton:bb_type="default" />
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/button_eight"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="8"
+            app:bootstrapSize="lg"
+            app:roundedCorners="false"
+            app:showOutline="true"
+            bootstrapButton:bb_type="default" />
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/button_nine"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="9"
+            app:bootstrapSize="lg"
+            app:roundedCorners="false"
+            app:showOutline="true"
+            bootstrapButton:bb_type="default" />
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/button_zero"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="0"
+            app:bootstrapSize="lg"
+            app:roundedCorners="false"
+            app:showOutline="true"
+            bootstrapButton:bb_type="default" />
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/button_cancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="C"
+            app:bootstrapSize="lg"
+            app:roundedCorners="false"
+            app:showOutline="true"
+            bootstrapButton:bb_type="default" />
+    </TableRow>
+
+</TableLayout>

@@ -1,51 +1,29 @@
 package com.ravious.mahjongnote;
 
-import android.content.ContentValues;
-import android.content.Context;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
-import android.view.ContextMenu;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import com.beardedhen.androidbootstrap.BootstrapButton;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import lecho.lib.hellocharts.model.Axis;
-import lecho.lib.hellocharts.model.Column;
-import lecho.lib.hellocharts.model.ColumnChartData;
 import lecho.lib.hellocharts.model.ComboLineColumnChartData;
-import lecho.lib.hellocharts.model.Line;
-import lecho.lib.hellocharts.model.LineChartData;
-import lecho.lib.hellocharts.model.PointValue;
-import lecho.lib.hellocharts.model.SubcolumnValue;
-import lecho.lib.hellocharts.util.ChartUtils;
 import lecho.lib.hellocharts.view.ComboLineColumnChartView;
-import lecho.lib.hellocharts.view.LineChartView;
-
-import static android.R.attr.color;
-import static android.R.attr.id;
 
 
 /**
  * Created by yuuki on 7/17/16.
  */
 
-public class MainResultFragment extends Fragment implements View.OnClickListener {
+public class MainResultFragment extends Fragment{
 
     View layout_main_result;
     ListView recent_result_list;
@@ -56,11 +34,17 @@ public class MainResultFragment extends Fragment implements View.OnClickListener
     TextView item_text_divident;
     TextView item_text_payment;
 
+    BootstrapButton newGameButton;
+
+    Chart test_chart;
+
 
     static MahjongNoteDbAdapter dbAdapter;
     static GameDataListAdapter game_data_list_adapter;
     static List<DbData> dataList = new ArrayList<DbData>();
     float[][] randomNumbersTab = new float[10][10];
+
+    static ComboLineColumnChartData data;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -72,7 +56,22 @@ public class MainResultFragment extends Fragment implements View.OnClickListener
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        layout_main_result = inflater.inflate(R.layout.main_result, null);
+        layout_main_result = inflater.inflate(R.layout.fragment_main, null);
+        newGameButton = (BootstrapButton) layout_main_result.findViewById(R.id.new_button);
+
+
+        newGameButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                try {
+                    MainActivity activity = (MainActivity) getActivity();
+                    activity.onNewGameButtonClicked();
+                } catch (ClassCastException e) {
+                    throw new ClassCastException("activity が OnOkBtnClickListener を実装していません.");
+                }
+            }
+        });
 
         //リストビューの追加(ここから)
         recent_result_list = (ListView) layout_main_result.findViewById(R.id.result_list);
@@ -104,12 +103,24 @@ public class MainResultFragment extends Fragment implements View.OnClickListener
 
         //折れ線グラフの追加(ここから)
         result_chart = (ComboLineColumnChartView) layout_main_result.findViewById(R.id.chart);
-        chart_data = new ComboLineColumnChartData();
-        generateValues();
-        generateData();
+        this.test_chart = new Chart();
+        chart_data = new ComboLineColumnChartData(test_chart.columnChartData,test_chart.lineChartData);
+        result_chart.setComboLineColumnChartData(chart_data);
+       // result_chart.setComboLineColumnChartData(test_chart);
+        //chart_data = new ComboLineColumnChartData();
+        //generateValues();
+        //generateData();
 
 
         // 折れ線グラフの追加(ここまで)
+
+        //チャートの処理
+        // チャートのクラスを作る(作るだけで初期化)
+        // チャートクラスおデータをチャートクラスのメソッドで、
+        // findbyidしたチャートにセットする
+
+
+
 
 
         // データベースアクセス(ここから)
@@ -204,14 +215,6 @@ public class MainResultFragment extends Fragment implements View.OnClickListener
         return super.onContextItemSelected(item);
     }
 */
-    @Override
-    public void onClick(View v) {
-        /*switch (v.getId()) {
-            case R.id.saveButton:
-                saveItem();
-                break;
-        }*/
-    }
 
     private class GameDataListAdapter extends BaseAdapter {
         @Override
@@ -250,71 +253,6 @@ public class MainResultFragment extends Fragment implements View.OnClickListener
         }
     }
 
-    private void generateData() {
-        // Chart looks the best when line data and column data have similar maximum viewports.
-        chart_data = new ComboLineColumnChartData(generateColumnData(), generateLineData());
-
-        Axis axisX = new Axis();
-        Axis axisY = new Axis().setHasLines(true);
-        axisX.setName("Axis X");
-        axisY.setName("Axis Y");
-        chart_data.setAxisXBottom(axisX);
-        chart_data.setAxisYLeft(axisY);
-
-        result_chart.setComboLineColumnChartData(chart_data);
-    }
-    private LineChartData generateLineData() {
-
-        List<Line> lines = new ArrayList<Line>();
-        //for (int i = 0; i < 10; ++i) {
-
-            List<PointValue> values = new ArrayList<PointValue>();
-            for (int j = 0; j < 10; ++j) {
-                values.add(new PointValue(j, randomNumbersTab[0][j]));
-            }
-
-
-            Line line = new Line(values);
-            line.setCubic(false);
-            line.setHasLabels(true);
-            line.setHasLines(true);
-            line.setHasPoints(true);
-            line.setColor(Color.argb(255,0,191,255));
-            lines.add(line);
-        //}
-
-        LineChartData lineChartData = new LineChartData(lines);
-
-        return lineChartData;
-
-    }
-    private void generateValues() {
-        for (int i = 0; i < 10; ++i) {
-            for (int j = 0; j < 10; ++j) {
-                randomNumbersTab[i][j] = (float) Math.random() * 50f + 5;
-            }
-        }
-    }
-
-    private ColumnChartData generateColumnData() {
-        int numSubcolumns = 1;
-        int numColumns = 10;
-        // Column can have many subcolumns, here by default I use 1 subcolumn in each of 8 columns.
-        List<Column> columns = new ArrayList<Column>();
-        List<SubcolumnValue> values;
-        for (int i = 0; i < numColumns; ++i) {
-
-            values = new ArrayList<SubcolumnValue>();
-            for (int j = 0; j < numSubcolumns; ++j) {
-                values.add(new SubcolumnValue((float) Math.random() * 50 + 5, ChartUtils.COLOR_GREEN));
-            }
-
-            columns.add(new Column(values));
-        }
-
-        ColumnChartData columnChartData = new ColumnChartData(columns);
-        return columnChartData;
-    }
 
 
 }
